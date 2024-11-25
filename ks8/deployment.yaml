@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: siteweb-deployment
+  labels:
+    app: site-web
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: site-web
+  template:
+    metadata:
+      labels:
+        app: site-web
+    spec:
+      containers:
+      - name: container-web
+        image: dddiallo/page-web
+        ports:
+        - containerPort: 80
